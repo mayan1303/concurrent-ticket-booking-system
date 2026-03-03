@@ -9,7 +9,11 @@ const PORT = process.env.PORT || 3000;
 const TOTAL_SEATS = 100;
 
 const client = createClient({
-  url: process.env.REDIS_URL
+  url: process.env.REDIS_URL,
+  socket: {
+    tls: true,
+    rejectUnauthorized: false
+  }
 });
 
 client.on("error", (err) => console.log("Redis Error:", err));
